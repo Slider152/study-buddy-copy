@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Study buddy Matching</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playball&display=swap" rel="stylesheet">
+    <!-- global style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- group page only style -->
+    <link rel="stylesheet" href="css/group.css">
+</head>
+<body>
+<!-- header -->
+<header class="navbar">
+    <div class="container">
+        <a href="./index.html" class="logo">
+            <div>
+                <img src="./images/logo-character.png" alt="study buddy"
+                     width="100%" height="100%" style="object-fit: cover;"/>
+            </div>
+            STUDY BUDDY
+        </a>
+
+        <!-- menu -->
+        <div class="nav-right">
+            <!--  profile menu : if sign in, change display:flex -->
+            <div class="profile-menu" id="profileMenu" style="display:none;">
+                <div class="profile-btn" id="profileBtn">
+                    <div class="profile-circle" id="profileCircle"></div>
+                    <span id="profileName"></span>
+                </div>
+
+                <div class="dropdown" id="dropdownMenu">
+                    <p class="dropdown-title">My Account</p>
+
+                    <a href="./mypage.html" class="dropdown-item" style="display: flex;">
+                        <img src="./images/user.gif" alt="user icon" class="icon-user">
+                        <span>My Page</span>
+                    </a>
+
+                    <hr />
+
+                    <button class="dropdown-item logout-btn" id="logoutBtn">
+                        <img src="./images/logout.png" alt="logout" class="icon-logout">
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Icon: 900px -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+            <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav id="site-menu">
+                <a href="./index.html">Home</a>
+                <a href="./group.html" aria-current="page">Current Group</a>
+                <a href="./message.html">Messages</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- header -->
+
+<main class="container group_page">
+    <!-- header section -->
+    <section class="group_header">
+        <div class="group_header-left">
+            <h1 class="group_title">My Study Groups</h1>
+            <p class="group_subtitle text-muted">
+                Manage and collaborate with your study groups
+            </p>
+        </div>
+        <button class="btn btn-primary group_header-btn" id="groupOpenModalTop" type="button">
+            <span class="group_plus">+</span>
+            <span>Make a Group</span>
+        </button>
+    </section>
+
+    <!-- content card -->
+    <section class="card group_card">
+        <!-- empty state -->
+        <div class="group_empty" id="groupEmptyState">
+            <div class="group_empty-icon">
+                <!-- simple icon -->
+                <span>👥</span>
+            </div>
+            <p class="group_empty-title">No study groups yet</p>
+            <p class="group_empty-text text-muted">
+                Create your first study group to get started
+            </p>
+            <button class="btn btn-primary group_empty-btn" id="groupOpenModalEmpty" type="button">
+                <span class="group_plus">+</span>
+                <span>Make a Group</span>
+            </button>
+        </div>
+
+        <!-- list state -->
+        <ul class="group_list" id="groupList" style="display:none;">
+            <!-- JS will render group items here -->
+        </ul>
+    </section>
+</main>
+
+<!-- modal: create / manage group -->
+<div class="group_modal-backdrop" id="groupModalBackdrop" hidden>
+    <div class="group_modal" role="dialog" aria-modal="true" aria-labelledby="groupModalTitle">
+        <div class="group_modal-header">
+            <div>
+                <h2 id="groupModalTitle">Create Study Group</h2>
+                <p class="text-muted" id="groupModalSubtitle">
+                    Start a new study group and invite your classmates
+                </p>
+            </div>
+            <button type="button" class="group_modal-close" id="groupModalClose" aria-label="Close">
+                ×
+            </button>
+        </div>
+
+        <div class="group_manage-header" id="groupManageHeader">
+            <span class="group_manage-icon">⚙︎</span>
+            <span class="group_manage-title">Group Settings</span>
+        </div>
+
+        <form id="groupForm" class="group_form">
+            <!-- Group Name -->
+            <div class="group_field">
+                <label for="groupName" class="group_label">
+                    Group Name <span class="group_required">*</span>
+                </label>
+                <input id="groupName" type="text" class="input"
+                       placeholder="e.g., COMP 2680 Final Review">
+            </div>
+
+            <!-- Class Name + subject search helper -->
+            <div class="group_field">
+                <label for="groupClassName" class="group_label">
+                    Class Name <span class="group_required">*</span>
+                </label>
+                <input id="groupClassName"
+                       type="text"
+                       class="input"
+                       placeholder="e.g., COMP 2680"
+                       readonly>
+
+                <p class="group_helper text-muted">
+                    Not sure about the code? Search the subject list below and pick one.
+                </p>
+
+                <!-- subject search area -->
+                <div class="group_subject-picker" id="groupSubjectPicker">
+                    <div class="group_subject-search">
+                        <input type="text" id="classSearch" class="input"
+                               placeholder="Search subject (e.g., COMP, MATH, ENGL)">
+                    </div>
+                    <div id="classList" class="group_subject-list">
+                        <!-- subject.js will render items here -->
+                    </div>
+                    <input type="hidden" id="selectedClasses">
+                </div>
+            </div>
+
+            <!-- Time Slot -->
+            <div class="group_field">
+                <label for="groupTimeSlot" class="group_label">
+                    Time Slot <span class="group_required">*</span>
+                </label>
+                <select id="groupTimeSlot" class="select">
+                    <option value="">Select time slot</option>
+                    <option value="Mon 9–11am">Mon 9–11am</option>
+                    <option value="Tue 9–11am">Tue 9–11am</option>
+                    <option value="Wed 9–11am">Wed 9–11am</option>
+                    <option value="Thu 9–11am">Thu 9–11am</option>
+                    <option value="Fri 9–11am">Fri 9–11am</option>
+                    <option value="Evening (5–8pm)">Evening (5–8pm)</option>
+                </select>
+            </div>
+
+            <!-- Max Members -->
+            <div class="group_field">
+                <label for="groupMaxMembers" class="group_label">Max Members</label>
+                <input id="groupMaxMembers" type="number" min="2" max="20" class="input"
+                       placeholder="5" value="5">
+            </div>
+
+            <!-- Current Members -->
+            <section class="group_members-section" id="groupMembersSection">
+                <div class="group_members-header">
+                    <span class="group_group-icon">👥</span>
+                    <span id="groupMembersTitle">Current Members</span>
+                </div>
+                <ul class="group_members-list" id="groupMembersList">
+                    <!-- JS: rendering members -->
+                </ul>
+            </section>
+
+            <!-- Recommended Members-->
+            <section class="group_recommend-section" id="groupRecommendedSection">
+                <div class="group_members-header">
+                    <span class="group_group-icon">👥</span>
+                    <span>Recommended Members</span>
+                </div>
+                <p class="group_recommend-empty">
+                    No recommended members yet.
+                </p>
+            </section>
+
+            <!-- actions -->
+            <div class="group_actions">
+                <button type="button"
+                        class="btn group_btn-danger"
+                        id="groupDeleteBtn">
+                    Delete Group
+                </button>
+
+                <div class="group_actions-right">
+                    <button type="button" class="btn group_btn-secondary" id="groupCancelBtn">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="groupSubmitBtn">
+                        Create Group
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- footer -->
+<footer class="footer container">
+    © 2025 Study Buddy
+</footer>
+<!-- footer -->
+
+<!-- js -->
+<script src="js/main.js"></script>
+<script src="js/subject.js"></script>
+<script src="js/group.js"></script>
+</body>
+</html>

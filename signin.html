@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <title>Study buddy Matching</title>
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playball&display=swap" rel="stylesheet">
+  <!-- style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="auth-page container">
+  <!-- logo -->
+  <div class="auth-logo">
+    <img src="images/logo.png" alt="Study Buddy" />
+  </div>
+
+  <section class="card auth-card">
+    <h2 class="text-primary">Welcome</h2>
+    <p class="text-muted">Sign in to your account or create a new one</p>
+
+    <!-- Tab -->
+    <input type="radio" name="auth-tab" id="tab-in" checked hidden />
+    <input type="radio" name="auth-tab" id="tab-up" hidden />
+
+    <div class="auth-tabs" role="tablist" aria-label="Auth tabs">
+      <label class="tab" for="tab-in" role="tab" aria-controls="panel-in">Sign In</label>
+      <label class="tab" for="tab-up" role="tab" aria-controls="panel-up">Sign Up</label>
+      <span class="tab-pill" aria-hidden="true"></span>
+    </div>
+
+    <!-- Signin Form -->
+    <form id="panel-in" class="auth-form signin" aria-labelledby="tab-in">
+      <label>Email</label>
+      <input class="input" type="email" placeholder="T0000000@mytru.ca" required />
+      <label>Password</label>
+      <input class="input" type="password" placeholder="********" required />
+      <button class="btn btn-primary lg" type="submit">Sign In</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="panel-up" class="auth-form signup" aria-labelledby="tab-up">
+      <!-- Full name / Email / Password -->
+      <label>Full Name</label>
+      <input class="input" type="text" placeholder="John Doe" required />
+
+      <label>Email</label>
+      <input class="input" type="email" placeholder="T0000000@mytru.ca" required />
+
+      <label>Password</label>
+      <input class="input" type="password" placeholder="Min 8 characters" required />
+
+      <!-- Classes -->
+      <label>Classes</label>
+      <div class="input-icon class-search">
+        <input id="classSearch" class="input" type="text" placeholder="Search classes..." autocomplete="off">
+        <img src="images/search.png" alt="search" />
+      </div>
+      <!-- Classes list -->
+      <div class="class-list" id="classList" role="listbox" aria-label="Class options"></div>
+
+      <!-- Free Time Slots -->
+      <label>Free Time Slots</label>
+      <div class="time-row">
+        <div class="select-wrap">
+          <select id="daySelect" class="select" aria-label="Day">
+            <option hidden value="">Day</option>
+            <option>Mon</option><option>Tue</option><option>Wed</option>
+            <option>Thu</option><option>Fri</option><option>Sat</option><option>Sun</option>
+          </select>
+        </div>
+        <div class="select-wrap">
+          <select id="timeSelect" class="select" aria-label="Time">
+            <option hidden value="">Select time</option>
+            <option>9–11am</option>
+            <option>11am–1pm</option>
+            <option>1–3pm</option>
+            <option>3–5pm</option>
+            <option>5–7pm</option>
+          </select>
+        </div>
+        <button class="btn btn-ghost add-btn" type="button" id="addSlot">Add</button>
+      </div>
+
+      <div class="chips" id="timeChips" aria-live="polite">
+        <!-- Showing selected Chips -->
+      </div>
+
+      <!-- Study Purpose -->
+      <label>Study Purpose</label>
+      <div class="select-wrap">
+        <select class="select" required>
+          <option>General Study</option>
+          <option>Test</option>
+          <option>Final</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary lg" type="submit">Create Account</button>
+    </form>
+  </section>
+</main>
+
+<!-- footer -->
+<footer class="footer container">
+  © 2025 Study Buddy
+</footer>
+<!-- footer -->
+
+
+
+<!-- js -->
+<script src="js/auth.js"></script>
+<script src="js/date-time.js"></script>
+<script src="js/subject.js"></script>
+</body>
+</html>

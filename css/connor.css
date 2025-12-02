@@ -1,0 +1,277 @@
+@layer connor 
+{
+/*page wrapper*/
+    .mypage-content-container
+{
+    display: flex;
+    margin-top: 15px;
+}
+/*profile info panel box*/
+.my-info-panel
+{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    width: 50%;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.profile-image
+{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.profile-name
+{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.profile-email
+{
+    text-align: center;
+    font-size: 0.9rem;
+    color: darkgray;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid black;
+    padding-bottom: 6px;
+}
+
+.chip1.selected 
+{
+    background: #007bff;
+    color: white;
+}
+
+/*groups panel box*/
+.my-groups-panel 
+{
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.my-groups-panel h2 
+{
+    margin-right: 15px;
+    font-size: 1.4rem;
+    padding-bottom: 8px;
+}
+
+/*groups wrapper*/
+.groups-list 
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.group-item 
+{
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.group-main 
+{
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.group-name 
+{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.group-members 
+{
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.group-actions 
+{
+    display: flex;
+    margin-left: 10px;
+}
+
+.group-actions button 
+{
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    background: #0073e6;
+    color: white;
+    font-size: 0.8rem;
+    margin-left: 8px;
+}
+
+.chip-container1 
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+#studyPurposeDisplay 
+{
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 16px;
+    background-color: lightgray;
+    margin-top: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.chip,
+.chip1
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 16px;
+    background-color: #eee;
+    margin: 4px 4px 4px 0;
+}
+
+.classDiv
+{
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+}
+
+.class-search
+{
+    width: 100%;
+}
+
+#classSearchMP
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.class-list 
+{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 320px;      
+    max-height: 200px;  
+    overflow-y: auto;   
+    z-index: 1000;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 6px 0;
+    margin-top: 6px;
+}
+
+/* items */
+.class-list .dropdown-item 
+{
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.class-list .dropdown-item:hover,
+.class-list .dropdown-item:focus 
+{
+    background-color: #0073e6;
+    color: #fff;
+}
+
+.editing .class-search
+{
+    display: block;
+}
+
+.editing .class-list
+{
+    display: block;
+}
+
+#edit-profile-btn
+{
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    background: #0073e6;
+    color: white;
+    font-size: 0.8rem;
+}
+
+#saveChangesBtn
+{
+    display: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    background: #28a745;
+    color: white;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.editing .chip1 
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 16px;
+    background-color: #eee;
+    margin: 4px 4px 4px 0;
+}
+
+.editing .chip1 button 
+{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.editing .chip1.selected 
+{
+    background: #0073e6;
+    color: white;
+}
+}

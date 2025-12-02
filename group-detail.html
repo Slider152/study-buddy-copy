@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <title>Study Buddy – Group Detail</title>
+
+  <!-- fonts + global styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playball&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/group.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="container">
+    <a href="./index.html" class="logo">
+      <div>
+        <img src="./images/logo-character.png" alt="study buddy"
+             width="100%" height="100%" style="object-fit: cover;"/>
+      </div>
+      STUDY BUDDY
+    </a>
+
+    <div class="nav-right">
+      <div class="profile-menu" id="profileMenu" style="display:none;">
+        <div class="profile-btn" id="profileBtn">
+          <div class="profile-circle" id="profileCircle"></div>
+          <span id="profileName"></span>
+        </div>
+
+        <div class="dropdown" id="dropdownMenu">
+          <p class="dropdown-title">My Account</p>
+
+          <a href="./mypage.html" class="dropdown-item" style="display:flex;">
+            <img src="./images/user.gif" alt="user icon" class="icon-user">
+            <span>My Page</span>
+          </a>
+
+          <hr />
+
+          <button class="dropdown-item logout-btn" id="logoutBtn">
+            <img src="./images/logout.png" alt="logout" class="icon-logout">
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav id="site-menu">
+        <a href="./index.html">Home</a>
+        <a href="./group.html" aria-current="page">Current Group</a>
+        <a href="./message.html">Messages</a>
+        <a href="./notice.html">Notices</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container group_page-detail">
+  <!-- back link -->
+  <button type="button" class="group_detail-back" id="groupDetailBack">
+    ← Back to Groups
+  </button>
+
+  <section class="group_detail-layout">
+    <!-- left column -->
+    <div class="group_detail-main">
+      <!-- group summary card -->
+      <section class="card group_detail-card">
+        <div class="group_detail-header-row">
+          <div>
+            <h1 class="group_detail-title" id="detailGroupName">Group Name</h1>
+            <p class="group_detail-course" id="detailGroupCourse">COMP</p>
+          </div>
+          <span class="group_detail-members-badge" id="detailMembersBadge">
+                        0 / 0 Members
+                    </span>
+        </div>
+
+        <div class="group_detail-row">
+          <span class="group_group-icon">📅</span>
+          <span id="detailGroupTime">Time not set</span>
+        </div>
+
+        <div class="group_detail-creator-block">
+          <p class="group_detail-creator-label">Group Creator</p>
+          <div class="group_detail-member-card" id="detailCreatorCard">
+            <!-- JS fills creator info -->
+          </div>
+        </div>
+      </section>
+
+      <!-- session notes card -->
+      <section class="card group_session-card">
+        <div class="group_session-header">
+          <div>
+            <h2 class="group_session-title">Session Notes</h2>
+            <p class="text-muted group_session-subtitle">
+              Notes from each study session
+            </p>
+          </div>
+        </div>
+
+        <div class="group_session-list" id="groupSessionList">
+          <!-- JS renders sessions -->
+        </div>
+      </section>
+    </div>
+
+    <!-- right column: members summary -->
+    <aside class="card group_detail-members-card">
+      <h3 class="group_detail-members-title">Members</h3>
+      <p class="text-muted" id="detailMembersCountText">0 of 0 members</p>
+
+      <div class="group_detail-members-list" id="detailMembersList">
+        <!-- JS renders members -->
+      </div>
+    </aside>
+  </section>
+</main>
+
+<footer class="footer container">
+  © 2025 Study Buddy
+</footer>
+
+<!-- note modal -->
+<div class="group_note-backdrop" id="groupNoteBackdrop" hidden>
+  <div class="group_note-modal" role="dialog" aria-modal="true" aria-labelledby="groupNoteTitle">
+    <div class="group_note-header">
+      <h2 id="groupNoteTitle">Add Note</h2>
+      <button type="button" class="group_note-close" id="groupNoteClose" aria-label="Close">×</button>
+    </div>
+
+    <form id="groupNoteForm" class="group_note-form">
+      <div class="group_field">
+        <label for="groupNoteSummary" class="group_label">Summary</label>
+        <textarea id="groupNoteSummary" class="textarea"
+                  placeholder="Write a short summary of this session"></textarea>
+      </div>
+
+      <div class="group_field">
+        <label for="groupNoteFile" class="group_label">Files (optional)</label>
+        <input id="groupNoteFile" type="file" multiple class="input">
+        <p class="text-muted group_note-file-help">
+          In this local version we only store file names. You can replace the download button with your own image later.
+        </p>
+      </div>
+
+      <div class="group_actions">
+        <button type="button" class="btn group_btn-secondary" id="groupNoteCancel">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Note</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/group-detail.js"></script>
+</body>
+</html>

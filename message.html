@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Study buddy Matching</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playball&display=swap" rel="stylesheet">
+    <!-- style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- header -->
+<header class="navbar">
+    <div class="container">
+        <a href="./index.html" class="logo">
+            <div>
+                <img src="./images/logo-character.png" alt="study buddy"
+                     width="100%" height="100%" style="object-fit: cover;"/>
+            </div>
+            STUDY BUDDY
+        </a>
+
+        <!-- menu -->
+        <div class="nav-right">
+            <!--  profile menu : if sign in, change display:flex -->
+            <div class="profile-menu" id="profileMenu" style="display:none;">
+                <div class="profile-btn" id="profileBtn">
+                    <div class="profile-circle" id="profileCircle"></div>
+                    <span id="profileName"></span>
+                </div>
+
+                <div class="dropdown" id="dropdownMenu">
+                    <p class="dropdown-title">My Account</p>
+
+                    <a href="./mypage.html" class="dropdown-item" style="display: flex;">
+                        <img src="./images/user.gif" alt="user icon" class="icon-user">
+                        <span>My Page</span>
+                    </a>
+
+                    <hr />
+
+                    <button class="dropdown-item logout-btn" id="logoutBtn">
+                        <img src="./images/logout.png" alt="logout" class="icon-logout">
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Icon: 900px -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+            <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav id="site-menu">
+                <a href="./index.html">Home</a>
+                <a href="./group.html">Current Group</a>
+                <a href="./message.html" aria-current="page">Messages</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- header -->
+
+<main class="container messages-page">
+    <!-- page title -->
+    <header class="messages-header">
+        <h1>Messages</h1>
+        <p>Chat with your study groups</p>
+    </header>
+
+    <!-- backdrop overlay for mobile side panels -->
+    <div class="msg-overlay" id="msgOverlay"></div>
+
+    <!-- 3-column grid (desktop) / 1 column + sliding panels (mobile) -->
+    <section class="messages-grid">
+        <!-- LEFT: Conversations -->
+        <aside class="msg-panel msg-sidebar" id="msgSidebar">
+            <div class="msg-panel-header">
+                <h2>Conversations</h2>
+            </div>
+
+            <div class="msg-sidebar-body">
+                <div class="msg-search">
+                    <input
+                            class="input"
+                            type="text"
+                            placeholder="Search groups..."
+                            id="searchGroups"
+                    />
+                </div>
+
+                <ul class="msg-conversation-list" id="conversationList">
+                    <!-- filled via JS based on user.groups -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- CENTER: Chat thread -->
+        <section class="msg-panel msg-thread-panel">
+            <div class="msg-thread-header">
+                <div class="msg-thread-title">
+                    <h2 id="threadTitle"></h2>
+                    <span id="threadSubtitle"></span>
+                </div>
+
+                <!-- mobile controls: open conversations & members -->
+                <div class="msg-thread-actions">
+                    <button
+                            class="icon-btn"
+                            id="openConversations"
+                            type="button"
+                            aria-label="Show conversations"
+                            style="display: none;"
+                    >
+                        <img src="./images/chat.png" alt="conversations" />
+                    </button>
+                    <button
+                            class="icon-btn"
+                            id="openMembers"
+                            type="button"
+                            aria-label="Show members"
+                    >
+                        <span class="icon-hamburger-lines">
+                          <span></span><span></span><span></span>
+                        </span>
+                    </button>
+
+
+                </div>
+            </div>
+
+            <div class="msg-thread-body" id="threadBody">
+                <!-- messages rendered here via JS -->
+            </div>
+
+            <div class="msg-input-bar">
+                <input
+                        id="messageInput"
+                        class="input"
+                        type="text"
+                        placeholder="Type a message..."
+                />
+                <button class="send-btn" id="sendBtn" aria-label="Send message">
+                    <img src="./images/send.png" alt="send" />
+                </button>
+            </div>
+        </section>
+
+        <!-- RIGHT: Members -->
+        <aside class="msg-panel msg-members-panel" id="msgMembers">
+            <div class="msg-members-header">
+                <h2>Members</h2>
+                <span id="memberCount">0 members</span>
+            </div>
+
+            <div class="msg-members-body" id="membersBody">
+                <!-- member rows rendered via JS -->
+            </div>
+        </aside>
+    </section>
+</main>
+
+<!-- footer -->
+<footer class="footer container">
+    © 2025 Study Buddy
+</footer>
+<!-- footer -->
+
+<!-- js -->
+<script src="js/main.js"></script>
+<script src="js/messages.js"></script>
+</body>
+</html>

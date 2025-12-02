@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>My Page</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playball&display=swap" rel="stylesheet">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/connor.css">
+</head>
+<body>
+
+<!-- header -->
+<header class="navbar">
+    <div class="container">
+        <a href="./index.html" class="logo">
+            <div>
+                <img src="./images/logo-character.png" alt="study buddy"
+                     width="100%" height="100%" style="object-fit: cover;"/>
+            </div>
+            STUDY BUDDY
+        </a>
+
+        <div class="nav-right">
+            <div class="profile-menu" id="profileMenu" style="display:none;">
+                <div class="profile-btn" id="profileBtn">
+                    <div class="profile-circle" id="profileCircle"></div>
+                    <span id="profileName"></span>
+                </div>
+
+                <div class="dropdown" id="dropdownMenu">
+                    <p class="dropdown-title">My Account</p>
+
+                    <a href="./mypage.html" class="dropdown-item" style="display:flex;">
+                        <img src="./images/user.gif" alt="user icon" class="icon-user">
+                        <span>My Page</span>
+                    </a>
+
+                    
+
+                    <button class="dropdown-item logout-btn" id="logoutBtn">
+                        <img src="./images/logout.png" alt="logout" class="icon-logout">
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+            <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav id="site-menu">
+                <a href="./index.html">Home</a>
+                <a href="./group.html">Current Group</a>
+                <a href="./message.html">Messages</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- header -->
+
+
+<div class="mypage-content-container">
+
+    <div class="my-info-panel">
+
+        <!--profile-->
+        <div class="profile">
+            <div class="profile-image" id="profileCircleDisplay"></div>
+            <h2 class="profile-name" id="fullNameDisplay">John Doe</h2>
+            <p class="profile-email" id="emailDisplay">test@test.com</p>
+        </div>
+
+        <!--profile details-->
+        <div class="profile-details">
+            <div class = "classDiv">
+                <h4>Classes</h4>
+                <div id="chipContainer1" class="chip-container1"></div>
+                <div class="class-search">
+                    <input id="classSearchMP" class="input" type="text" placeholder="Search classes..." autocomplete="off">
+                </div>
+                <!--classes list-->
+                <div class="class-list" id="classListMP" role="listbox" aria-label="Class options"></div>
+            </div>
+            <!--free time section-->
+            <h3>Your Free Time</h3>
+            <div id = "edit-time"> 
+                <div class="formRow">
+                    <label for="daySelectMP">Day:</label>
+                    <select id="daySelectMP">
+                        <option value="">Select a day</option>
+                        <option value="Mon">Monday</option>
+                        <option value="Tues">Tuesday</option>
+                        <option value="Wed">Wednesday</option>
+                        <option value="Thurs">Thursday</option>
+                        <option value="Fri">Friday</option>
+                        <option value="Sat">Saturday</option>
+                        <option value="Sun">Sunday</option>
+                    </select>
+                </div>
+
+                <div class="formRow">
+                    <label for="timeSelectMP">Time:</label>
+                    <select id="timeSelectMP">
+                        <option value="">Select a time</option>
+                        <option value="9-11">9AM - 11AM</option>
+                        <option value="11-1">11AM - 1PM</option>
+                        <option value="1-3">1PM - 3PM</option>
+                        <option value="3-5">3PM - 5PM</option>
+                        <option value="5-7">5PM - 7PM</option>
+                    </select>
+                </div>
+            </div>
+            <button id="addSlotMP" type="button">Add Free Time Slot</button>
+
+            <!--time chip display-->
+            <div id="timeChipsMP" class="chipContainer"></div>
+
+            <h3>Your Study Purpose</h3>
+
+            <!--study purpose display-->
+            <div id="studyPurposeDisplay"></div>
+
+            <!--study purpose dropdown selector-->
+            <select id="studyPurposeMP">
+                <option value="">Select your study purpose</option>
+                <option value="General study">General study</option>
+                <option value="Mid-term">Mid-term</option>
+                <option value="Final">Final</option>
+            </select>
+
+            <button id="saveChangesBtn">Save Changes</button>
+        </div>
+        <button id="edit-profile-btn">Edit profile</button>
+    </div>
+<!--groups panel wrapper-->
+    <div class="my-groups-panel">
+        <h2>My Groups</h2>
+
+        <div class="groups-list">
+            <div class="group-item">
+                <div class="group-main">
+                    <span class="group-name">Group Name Here</span>
+                    <span class="group-members">Max 5 members</span>
+                </div>
+
+                <div class="group-actions">
+                    <button class="view-group-btn">View</button>
+                    <button class="edit-group-btn">Edit</button>
+                    <button class="invite-group-btn">Invite</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<footer class="footer container">
+    © 2025 Study Buddy
+</footer>
+<!-- footer -->
+
+<!-- JS -->
+<script src="js/main.js"></script>
+<script src="js/mypage.js"></script>
+<script src="js/subject.js"></script>
+
+</body>
+</html>

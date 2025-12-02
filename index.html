@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Study buddy Matching</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playball&display=swap" rel="stylesheet">
+    <!-- style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- header -->
+<header class="navbar">
+    <div class="container">
+        <a href="./index.html" class="logo">
+            <div>
+                <img src="./images/logo-character.png" alt="study buddy"
+                     width="100%" height="100%" style="object-fit: cover;"/>
+            </div>
+            STUDY BUDDY
+        </a>
+
+        <!-- menu -->
+        <div class="nav-right">
+            <!--  profile menu : if sign in, change display:flex -->
+            <div class="profile-menu" id="profileMenu" style="display:none;">
+                <div class="profile-btn" id="profileBtn">
+                    <div class="profile-circle" id="profileCircle"></div>
+                    <span id="profileName"></span>
+                </div>
+
+                <div class="dropdown" id="dropdownMenu">
+                    <p class="dropdown-title">My Account</p>
+
+                    <a href="./mypage.html" class="dropdown-item" style="display: flex;">
+                        <img src="./images/user.gif" alt="user icon" class="icon-user">
+                        <span>My Page</span>
+                    </a>
+
+                    <hr />
+
+                    <button class="dropdown-item logout-btn" id="logoutBtn">
+                        <img src="./images/logout.png" alt="logout" class="icon-logout">
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Icon: 900px -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+            <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav id="site-menu">
+                <a href="./index.html" aria-current="page">Home</a>
+                <a href="./group.html">Current Group</a>
+                <a href="./message.html">Messages</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- header -->
+<main class="container">
+    <!-- banner -->
+    <section class="banner">
+        <div>
+            <h1>Find a Study Buddy</h1>
+            <p>Connect with classmates to study together.</p>
+            <button id="signUpBtn" class="btn btn-accent lg" aria-label="Sign up">
+                Sign Up
+            </button>
+        </div>
+
+        <img src="./images/logo.png" width="100%" alt="Study Buddy hero"/>
+    </section>
+
+    <!-- Dashboard (Logged-in Users Only) -->
+    <section id="dashboard" class="dashboard-section" style="display:none; margin-top: 40px;">
+        <div class="dashboard-header">
+            <h2>Welcome back, <span id="dashboardName"></span>!</h2>
+            <p id="dashboardMeta" class="dashboard-meta text-muted"></p>
+        </div>
+
+        <!-- top stats -->
+        <div class="dashboard-stats">
+            <div class="card dashboard-stat-card">
+                <p class="dashboard-stat-label">My Study Groups</p>
+                <h3 id="statGroups" class="dashboard-stat-number">0</h3>
+            </div>
+
+            <div class="card dashboard-stat-card">
+                <p class="dashboard-stat-label">Potential Matches</p>
+                <h3 id="statPopular" class="dashboard-stat-number">0</h3>
+            </div>
+
+            <div class="card dashboard-stat-card">
+                <p class="dashboard-stat-label">Active Chats</p>
+                <h3 id="statChats" class="dashboard-stat-number">0</h3>
+            </div>
+        </div>
+
+        <!-- lists -->
+        <div class="dashboard-main">
+            <!-- My Groups -->
+            <div class="card dashboard-card">
+                <div class="dashboard-card-header">
+                    <div>
+                        <h3 class="dashboard-card-title">My Study Groups</h3>
+                        <p class="dashboard-card-subtitle text-muted">
+                            Groups you're participating in
+                        </p>
+                    </div>
+                    <button id="newGroupBtn" type="button" class="btn border-mint btn-sm">
+                        + New Group
+                    </button>
+                </div>
+
+                <ul id="myGroupList" class="dashboard-list">
+                    <li class="text-muted">You don’t have any study groups yet.</li>
+                </ul>
+            </div>
+
+            <!-- Recommended -->
+            <div class="card dashboard-card">
+                <div class="dashboard-card-header">
+                    <div>
+                        <h3 class="dashboard-card-title">Recommended Matches</h3>
+                        <p class="dashboard-card-subtitle text-muted">
+                            Students taking the same classes
+                        </p>
+                    </div>
+                </div>
+
+                <ul id="recommendedList" class="dashboard-list">
+                    <li class="text-muted">No matches found yet.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<!-- footer -->
+<footer class="footer container">
+    © 2025 Study Buddy
+</footer>
+<!-- footer -->
+
+
+
+<!-- js -->
+<script src="js/main.js"></script>
+</body>
+</html>
